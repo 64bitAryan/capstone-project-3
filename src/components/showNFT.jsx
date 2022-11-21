@@ -79,4 +79,4 @@ function CreateNFT() {
   )
 }
 
-export default CreateNFT
+export default showNFT

@@ -16,6 +16,7 @@ const App = () => {
       <Transactions/>
       <Footer/>
       <CreateNFT/>
+      <showNFT />
     </div>
   )
 }
