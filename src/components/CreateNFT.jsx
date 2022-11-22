@@ -19,6 +19,8 @@ function CreateNFT() {
         if (!title || !price || !description) return
         setGlobalState('modal', 'scale-0')
         console.log("Minted")
+
+        closeModal()
     }
 
     const closeModal = () => {
