@@ -40,7 +40,7 @@ function CreateNFT() {
     <div className={`fixed top-0 left-0 w-screen h-screen flex items-center
         justify-center bg-black bg-opacity-50 transform
         transition-transform duration-300 ${modal}`}>
-        <div className='bg-[#151c25] shadow-xl shadow-[#e32970] rounded-xl w-11/12 md:w-2/5 h-7/12 p-6'>
+        <div className='bg-[#151c25] shadow-xl shadow-[#2E8EEE] rounded-xl w-11/12 md:w-2/5 h-7/12 p-6'>
 
         <form className="flex flex-col" onSubmit={handleSubmit}>
             <div className="flex justify-between items-center text-gray-400">
@@ -74,7 +74,7 @@ function CreateNFT() {
             <div className='flex justify-between items-center bg-gray-800 rounded-xl mt-5'>
                 <textarea className='block w-full text-sm text-slate-500 focus:outline-none cursor-pointer resize-none focus:ring-0 bg-transparent border-0 h-20' type="text" required placeholder='Description' name='description' onChange={(e) => setDescription(e.target.value)} value={description} ></textarea>
             </div>
-            <button className='flex justify-center items-center shadow-lg shadow-black text-white p-2 mt-5 bg-[#e32970] hover:bg-[#bd255f] rounded-full px-1.5 py-2'>Mint the NFT</button>
+            <button className='flex justify-center items-center shadow-lg shadow-black text-white p-2 mt-5 bg-[#2E8EEE] hover:bg-[#256EB7] rounded-full px-1.5 py-2'>Mint the NFT</button>
         </form>
         </div>
     </div>

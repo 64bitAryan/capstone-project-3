@@ -14,21 +14,21 @@ const Hero = () => {
         </div>
         
         <div className='flex mt-5'>
-             <button className='shadow-xl shadow-black text-white bg-[#e32970] hover:bg-[#bd255f] rounded-full p-2' onClick={() => setGlobalState('modal', 'scale-100')}>Create NFT
+             <button className='shadow-xl shadow-black text-white bg-[#2E8EEE] hover:bg-[#256EB7] rounded-xl p-2' onClick={() => setGlobalState('modal', 'scale-100')}>Create NFT
              </button>
         </div>
 
         <div className='w-3/4 flex justify-between items-center at-5 mt-5'>
             <div className='text-white'>
-                <p className="font-bold">123k</p>
+                <p className="font-bold">123K</p>
                 <small className='text-gray-300'>Users</small>
             </div>
             <div className='text-white'>
-                <p className="font-bold">152k</p>
+                <p className="font-bold">152K</p>
                 <small className='text-gray-300'>Artworks</small>
             </div>
             <div className='text-white'>
-                <p className="font-bold">200k</p>
+                <p className="font-bold">200K</p>
                 <small className='text-gray-300'>Artists</small>
             </div>
         </div>

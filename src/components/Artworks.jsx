@@ -1,4 +1,6 @@
 import React from 'react'
+import { setGlobalState } from '../store'
+
 const imgHero = 'https://images.cointelegraph.com/images/1434_aHR0cHM6Ly9zMy5jb2ludGVsZWdyYXBoLmNvbS91cGxvYWRzLzIwMjEtMDYvNGE4NmNmOWQtODM2Mi00YmVhLThiMzctZDEyODAxNjUxZTE1LmpwZWc=.jpg'
 
 const Artworks = () => {
@@ -15,7 +17,7 @@ const Artworks = () => {
                 ))}
             </div>
                 <div className='text-center my-5'>
-                    <button className='shadow-lg shadow-black text-white bg-[#e32970] hover:bg-[#bd255f] rounded-full px-1.5 py-2'>Load More</button>
+                    <button className='shadow-lg shadow-black text-white bg-[#2E8EEE] hover:bg-[#256EB7] rounded-xl px-3 py-2'>Load More</button>
                 </div>
         </div>
     </div>
@@ -33,7 +35,7 @@ const Card = ({nft}) => (
                 <p className='text-sm font-semibold'>0.34 ETH</p>
             </div>
 
-            <button className='shadow-lg shadow-black text-sm bg-[#e32970] hover:bg-[#bd255f] rounded-full px-1.5 py-1'>View Details</button>
+            <button className='shadow-lg shadow-black text-sm bg-[#2E8EEE] hover:bg-[#256EB7] rounded-lg px-1.5 py-1' onClick={() => setGlobalState('showModal','scale-100')}>View Details</button>
         </div>
     </div>
 )

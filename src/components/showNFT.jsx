@@ -7,18 +7,22 @@ const imgNFT = 'https://cdna.artstation.com/p/assets/images/images/024/634/210/l
 function ShowNFT() {
     const [showModal] = useGlobalState('showModal')
 
+    const closeModal = () => {
+        setGlobalState('showModal', 'scale-0')
+    }
+
 
   return (
     <div className={`fixed top-0 left-0 w-screen h-screen flex items-center
         justify-center bg-black bg-opacity-50 transform
         transition-transform duration-300 ${showModal}`}>
-        <div className='bg-[#151c25] shadow-xl shadow-[#e32970] rounded-xl w-11/12 md:w-2/5 h-7/12 p-6'>
+        <div className='bg-[#151c25] shadow-xl shadow-[#2E8EEE] rounded-xl w-11/12 md:w-2/5 h-7/12 p-6'>
 
         <div className="flex flex-col"  >
             <div className="flex justify-between items-center text-gray-400">
                 <p className='font-semibold'>Purchase NFT</p>
                 <button type="button" className="border-0 bg-transparent focus:outline-none">
-                    <FaTimes className="text-gray-400" />
+                    <FaTimes className="text-gray-400" onClick={closeModal} />
             </button>
             </div>
 
@@ -48,9 +52,9 @@ function ShowNFT() {
                 </div>
             </div>
 
-            <div className=''>
-                <button className='flex justify-center items-center shadow-lg shadow-black text-white p-2 mt-5 bg-[#e32970] hover:bg-[#bd255f] rounded-full px-1.5 py-2 w-full'>Purchase</button>
-                <button className='flex justify-center items-center shadow-lg shadow-black text-white p-2 mt-5 bg-[#e32970] hover:bg-[#bd255f] rounded-full px-1.5 py-2 w-full'>Change Price</button>
+            <div className='flex justify-between items-center space-x-2'>
+                <button className='flex justify-center items-center shadow-lg shadow-black text-white p-2 mt-5 bg-[#2E8EEE] hover:bg-[#256EB7] rounded-xl px-1.5 py-2 w-full'>Purchase</button>
+                {/* <button className='flex justify-center items-center shadow-lg shadow-black text-white p-2 mt-5 bg-[#2E8EEE] hover:bg-[#256EB7] rounded-full px-1.5 py-2 w-full'>Change Price</button> */}
             </div>
             </div>
         </div>

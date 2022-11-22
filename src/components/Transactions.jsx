@@ -14,7 +14,7 @@ const Transactions = () => {
                 ))}
             </div>
             <div className='text-center my-5'>
-            <button className='shadow-lg shadow-black text-white bg-[#e32970] hover:bg-[#bd255f] rounded-full px-1.5 py-2'>Load More</button>
+            <button className='shadow-lg shadow-black text-white bg-[#2E8EEE] hover:bg-[#256EB7] rounded-xl px-3 py-2'>Load More</button>
             </div>
         </div> 
       </div>
@@ -23,20 +23,20 @@ const Transactions = () => {
 
 const Transaction = ({ tx }) => (
     <div className='flex justify-between items-center border border-pink text-gray w-full shadow-xl shadow-black rounded-md overflow-hidden bg-gray-800 my-2 p-3'>
-        <div className='rounded-md shadow-sm shadow-pink-500 p-2 '>
-            <BiTransfer />
+        <div className='rounded-md shadow-sm shadow-cyan-300 p-2 '>
+            <BiTransfer className='text-cyan-200' />
         </div>
 
         <div>
-            <h4 className='text-sm'>#{tx}Fund Transfered</h4>
+            <h4 className='text-sm text-cyan-100'>#{tx}Fund Transfered</h4>
             <small className='flex justify-start items-center'>
-                <span className='mr-1'>Received By</span>
-                <a className='text-pink-500 mr-2' href="#" target="_blank">0x31..038e</a>
-                <MdOpenInNew />
+                <span className='mr-1 text-cyan-100'>Received By</span>
+                <a className='text-cyan-500 mr-2' href="#" target="_blank">0x31..038e</a>
+                <MdOpenInNew className='text-cyan-500 cursor-pointer'/>
             </small>
         </div>
 
-        <p className='text-sm font-medium'>0.32 ETH</p>
+        <p className='text-sm font-medium text-cyan-200'>0.32 ETH</p>
 
     </div>
 )
