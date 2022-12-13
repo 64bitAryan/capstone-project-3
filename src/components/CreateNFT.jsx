@@ -1,10 +1,27 @@
 import React from 'react'
 import {FaTimes} from 'react-icons/fa'
 import { useState } from 'react'
-import { setGlobalState, useGlobalState } from '../store'
+import { setAlert, setGlobalState, setLoadingMsg, useGlobalState } from '../store'
+import { create } from 'ipfs-http-client'
+import { mintNFT } from '../Blockchain.services'
 
 const imgNFT = 'https://cdna.artstation.com/p/assets/images/images/024/634/210/large/ninon-rodriguez-asset.jpg?1583059328'
-function CreateNFT() {
+
+const auth =
+  'Basic ' +
+  Buffer.from(
+    '2I4XO5Rt8rR8qwStrBiuAuwZsnE' + ':' + '27cf8cad21d788d649d2d44032f77420',
+  ).toString('base64')
+
+const client = create({
+  host: 'ipfs.infura.io',
+  port: 5001,
+  protocol: 'https',
+  headers: {
+    authorization: auth,
+  },
+})
+const CreateNFT = () => {
     const [modal] = useGlobalState('modal')
     const [title, setTitle] = useState('')
     const [price, setPrice] = useState('')
@@ -13,14 +30,37 @@ function CreateNFT() {
     const [imgBase64, setImgBase64] = useState(null)
 
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
 
         if (!title || !price || !description) return
         setGlobalState('modal', 'scale-0')
-        console.log("Minted")
+        setGlobalState('loading', { show: true, msg: 'Uploading IPFS data...' })
+        try{
+            const created = await client.add(fileUrl);
+            setLoadingMsg('Uploaded, approve transaction now...')
+            const meteDataURI = `https://ipfs.io/ipfs/${created.path}`
+            const nft = {title, description, price, meteDataURI}
 
+            await mintNFT(nft)
+            closeModal()
+            setAlert('Minting completed...')
+        }catch(error){
+            console.log('Error uploading file', error)
+            setAlert('Minting failed :(', 'red')
+        }
         closeModal()
+    }
+
+    const changeImage = async (e) => {
+        const reader = new FileReader()
+        if(e.target.files[0]) reader.readAsDataURL(e.target.files[0])
+
+        reader.onload = (readerEvent) => {
+            const file = readerEvent.target.result
+            setImgBase64(file)
+            setFileUrl(e.target.files[0])
+        }
     }
 
     const closeModal = () => {
@@ -59,7 +99,7 @@ function CreateNFT() {
             <div className='flex justify-between items-center bg-gray-800 rounded-xl mt-5'>
                 <label className='block'>
                     <span className='sr-only'>Choose Profile Photo</span>
-                    <input className='block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold hover:file:bg-[#1d2631] focus:outline-none cursor-pointer focus:ring-0' type="file" accept='image/png, image/gif, image/jpeg, image/jpg, image/webp' required />
+                    <input className='block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold hover:file:bg-[#1d2631] focus:outline-none cursor-pointer focus:ring-0' type="file" accept='image/png, image/gif, image/jpeg, image/jpg, image/webp' required onChange={changeImage} />
                 </label>
             </div>
 
